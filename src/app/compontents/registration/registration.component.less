@@ -1,0 +1,96 @@
+.registration-container {
+  @green-color: #16a085;
+  @tick-size: 29px;
+  @placeholder-color: darkGrey;
+
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 40px;
+
+  .row-container {
+    display: inline-block;
+
+    .label {
+      margin-left: 1px;
+      color: @placeholder-color;
+      opacity: 1;
+      font-family: "Times New Roman", Times, serif;
+      font-size: large;
+    }
+
+    .tick-container {
+      height: @tick-size;
+      width: @tick-size;
+      float: right;
+    }
+
+    .valid {
+      background: url("src/assets/images/green-tick.png") no-repeat;
+      background-size: @tick-size @tick-size;
+      height: @tick-size * 2;
+    }
+
+    .validation-error {
+      margin-bottom: 10px;
+      color: #b80d0d;
+      font-style: italic;
+      font-weight: bold;
+      padding: 0 30px 0 20px;
+    }
+
+    ::placeholder {
+      color: @placeholder-color;
+      font-family: "Times New Roman", Times, serif;
+      font-size: large;
+    }
+
+    div input {
+      &:focus {
+        border-bottom: 2px solid @green-color;
+        color: @green-color;
+        transition: 0.2s ease;
+        outline: none;
+      }
+
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      width: 220px;
+      height: 32px;
+      border: none;
+      border-bottom: 1px solid #AAA;
+      font-size: 15px;
+      transition: 0.2s ease;
+    }
+
+  }
+
+  .submit-button {
+    &[disabled] {
+      background: #6e6e6e;
+      cursor: unset;
+    }
+
+    &:hover:enabled {
+      opacity: 0.8;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+      transition: 0.1s ease;
+    }
+
+    &:active {
+      outline: none;
+    }
+
+    margin-top: 10px;
+    width: 120px;
+    height: 32px;
+    background: @green-color;
+    border: none;
+    border-radius: 2px;
+    color: #FFF;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: 0.1s ease;
+    cursor: pointer;
+  }
+}
