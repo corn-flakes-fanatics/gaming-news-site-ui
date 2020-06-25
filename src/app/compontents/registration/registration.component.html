@@ -1,0 +1,101 @@
+<div class="registration-container">
+	<form [formGroup]="registrationForm" (ngSubmit)="onSubmit(registrationForm.value)">
+		<div class="row-container">
+			<div *ngIf="(login.dirty || login.touched) && showLabel(login)" class="label">
+				<label for="login">Login: </label>
+			</div>
+			<div>
+				<input id="login" type="text" formControlName="login" placeholder="Login">
+				<div *ngIf="login.valid" class="valid tick-container"></div>
+			</div>
+			<div *ngIf="login.invalid && (login.dirty || login.touched)" class="validation-error">
+				<div *ngIf="login.errors.required">
+					Login is required
+				</div>
+				<div *ngIf="login.errors.inUse">
+					Login is already taken
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="row-container">
+			<div *ngIf="(username.dirty || username.touched) && showLabel(username)" class="label">
+				<label for="username">Username: </label>
+			</div>
+			<div>
+				<input id="username" type="text" formControlName="username"
+				       placeholder="Username">
+				<div *ngIf="username.valid" class="valid tick-container"></div>
+			</div>
+			<div *ngIf="username.invalid && (username.dirty || username.touched)" class="validation-error">
+				<div *ngIf="username.errors.required">
+					Username is required
+				</div>
+				<div *ngIf="username.errors.inUse">
+					Username is already taken
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="row-container">
+			<div *ngIf="(email.dirty || email.touched) && showLabel(email)" class="label">
+				<label for="email">Email address: </label>
+			</div>
+			<div>
+				<input id="email" type="email" formControlName="email"
+				       placeholder="Email address">
+				<div *ngIf="email.valid" class="valid tick-container"></div>
+			</div>
+			<div *ngIf="email.invalid && (email.dirty || email.touched)" class="validation-error">
+				<div *ngIf="email.errors.required">
+					Email is required
+				</div>
+				<div *ngIf="email.errors.email">
+					Email format is invalid
+				</div>
+				<div *ngIf="email.errors.inUse">
+					Email is already taken
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="row-container">
+			<div *ngIf="(password.dirty || password.touched) && showLabel(password)" class="label">
+				<label for="password">Password: </label>
+			</div>
+			<div>
+				<input id="password" type="password" formControlName="password"
+				       placeholder="Password">
+				<div *ngIf="password.valid" class="valid tick-container"></div>
+			</div>
+			<div *ngIf="password.invalid && (password.dirty || password.touched)" class="validation-error">
+				<div *ngIf="password.errors.required">
+					Password is required
+				</div>
+				<div *ngIf="password.invalid">
+					Password is not strong enough
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="row-container">
+			<div *ngIf="(repeatPassword.dirty || repeatPassword.touched) && showLabel(repeatPassword)" class="label">
+				<label for="repeatPassword">Repeat password: </label>
+			</div>
+			<div>
+				<input id="repeatPassword" type="password"
+				       formControlName="repeatPassword"
+				       placeholder="Repeat password">
+				<div *ngIf="passwordsMatch()" class="valid tick-container"></div>
+			</div>
+			<div *ngIf="(password.dirty || password.touched) || (repeatPassword.dirty || repeatPassword.touched)"
+			     class="validation-error">
+				<div *ngIf="!passwordsMatch()">
+					Passwords do not match
+				</div>
+			</div>
+		</div>
+		<br>
+		<button type="submit" class="submit-button" [disabled]="submitDisabled()">Register</button>
+	</form>
+</div>
